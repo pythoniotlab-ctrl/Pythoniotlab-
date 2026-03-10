@@ -49,9 +49,10 @@ border-radius:5px;
 overflow:auto;
 }
 
-img{
-width:300px;
-margin-top:10px;
+img {
+    width: 80%;
+    max-width: 900px;
+    height: auto;
 }
 
 </style>
@@ -77,7 +78,8 @@ Program Selection
 <option value="p3">Program 3</option>
 <option value="p4">Program 4</option>
 <option value="p5">Program 5</option>
-<option value="p6">Program 6</option>
+<option value="p6(1)">Program 6(1)</option>
+<option value="p6(2)">Program 6(2)</option>
 <option value="p7">Program 7</option>
 <option value="p8">Program 8</option>
 <option value="p9">Program 9</option>
@@ -90,27 +92,194 @@ Program Selection
 
 </select>
 
-
-<!-- PROGRAM 1 -->
+<!--PROGRAM 1--> 
 
 <div id="p1" class="program">
-
-<h2>Python Program (main.py)</h2>
+<h2>1 program</h2>
 
 <div class="code">
 <pre>
-from machine import ADC
-import time
+name = "AlexPandian"
+address = "G.N. Mills Post, Coimbatore, Tamil Nadu"
+mobile_no = 123456789
+college_name = "Kongunadu Arts and Science College"
+course = "Python"
 
-sensor = ADC(26)
+print("Name:", name, type(name))
+print("Address:", address, type(address))
+print("Mobile No:", mobile_no, type(mobile_no))
+print("College Name:", college_name, type(college_name))
+print("Course:", course, type(course))
+</pre>
+</div>
+
+
+<h2>output</h2>
+
+<img src=" https://github.com/pythoniotlab-ctrl/Pythoniotlab-/blob/main/images/Screenshot%202026-03-10%20182102.png?raw=true">
+
+</div>
+
+<br>
+
+<!--PROGRAM 2--> 
+
+<div id="p2" class="program">
+<h2>2 program</h2>
+
+<div class="code">
+<pre>
+a = int(input("Enter first number: "))
+b = int(input("Enter second number: "))
+c = int(input("Enter third number: "))
+
+if a >= b and a >= c:
+    largest = a
+elif b >= a and b >= c:
+    largest = b
+else:
+    largest = c
+
+print("Largest number is:", largest)
+
+a = int(input("Enter first number: "))
+b = int(input("Enter second number: "))
+c = int(input("Enter third number: "))
+
+largest = a if (a > b and a > c) else (b if b > c else c)
+
+print("Largest number is:", largest)
+</pre>
+</div>
+
+
+<h2>output</h2>
+
+<img src="https://github.com/pythoniotlab-ctrl/Pythoniotlab-/blob/main/images/Screenshot%202026-03-10%20182259.png?raw=true ">
+
+</div>
+<br>
+
+<!--PROGRAM 3--> 
+
+<div id="p3" class="program">
+<h2>3 program</h2>
+
+<div class="code">
+<pre>
+def factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    return n * factorial(n - 1)
+
+num = int(input("Enter a positive integer: "))
+print("Factorial of", num, "is:", factorial(num))
+</pre>
+</div>
+
+
+<h2>output</h2>
+
+<img src="https://github.com/pythoniotlab-ctrl/Pythoniotlab-/blob/main/images/Screenshot%202026-03-10%20182751.png?raw=true">
+
+</div>
+<br>
+
+<!--PROGRAM 4--> 
+
+<div id="p4" class="program">
+<h2>4 program</h2>
+
+<div class="code">
+<pre>
+def fibonacci_up_to(n, a=0, b=1):
+    if a > n:
+        return []
+    return [a] + fibonacci_up_to(n, b, a + b)
+
+n = int(input("Enter a number: "))
+fib_sequence = fibonacci_up_to(n)
+
+print("Fibonacci sequence up to", n, "is:")
+print(fib_sequence)
+</pre>
+</div>
+
+
+<h2>output</h2>
+
+<img src="https://github.com/pythoniotlab-ctrl/Pythoniotlab-/blob/main/images/Screenshot%202026-03-10%20183021.png?raw=true">
+
+</div>
+<br>
+
+<!--PROGRAM 5--> 
+
+<div id="p5" class="program">
+<h2>5 program</h2>
+
+<div class="code">
+<pre>
+import random
+
+n = int(input("How many unique random numbers do you want to generate? "))
+
+filename = "unique_random_numbers.txt"
+
+numbers = list(range(1, n + 1))
+random.shuffle(numbers)
+
+with open(filename, "w") as file:
+    for num in numbers:
+        file.write(str(num) + "\n")
+
+print(f"{n} unique random numbers written to {filename}.")
+
+print("\nNumbers in the file:")
+with open(filename, "r") as file:
+    for line in file:
+        print(line.strip())
+</pre>
+</div>
+
+
+<h2>output</h2>
+
+<img src="https://github.com/pythoniotlab-ctrl/Pythoniotlab-/blob/main/images/Screenshot%202026-03-10%20183349.png?raw=true">
+
+</div>
+
+
+<!-- PROGRAM 6(1) -->
+
+<div id="p6(1)" class="program">
+
+<h2>Python Program (main.py)</h2>
+<h2>6 program -(1)</h2>
+
+<div class="code">
+<pre>
+import machine
+
+led = machine.Pin(15, machine.Pin.OUT)
 
 while True:
+    user_input = input("Enter 'on' to turn LED on, 'off' or 'quit' to stop: ").strip().lower()
 
- value = sensor.read_u16()
+    if user_input == 'on':
+        led.value(1)
+        print("LED is ON")
 
- print("Sensor Value =", value)
+    elif user_input == 'off':
+        led.value(0)
+        print("LED is OFF")
 
- time.sleep(2)
+    elif user_input == 'quit':
+        print("Exiting the program.")
+        break
+
+    else:
+        print("Invalid input!")
 </pre>
 </div>
 
@@ -120,8 +289,17 @@ while True:
 <div class="code">
 <pre>
 {
-"version": 1,
-"editor": "wokwi"
+  "version": 1,
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-pi-pico", "id": "pico", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-led", "id": "led", "top": -32.4, "left": -82.6, "attrs": {} }
+  ],
+  "connections": [
+    [ "pico:GP15", "led:A", "green", [] ],
+    [ "pico:GND.1", "led:C", "black", [] ]
+  ],
+  "dependencies": {}
 }
 </pre>
 </div>
@@ -129,50 +307,767 @@ while True:
 
 <h2>Circuit Diagram</h2>
 
-<img src="https://satspans.github.io/kasc-sc-pythoniot/7.png">
+<img src="https://github.com/pythoniotlab-ctrl/Pythoniotlab-/blob/main/images/6.1.png?raw=true">
 
 </div>
 
+<br>
 
-<!-- PROGRAM 2 -->
+<!--PROGRAM 6(2)--> 
 
-<div id="p2" class="program">
-
-<h2>Python Program</h2>
+<div id="p6(2)" class="program">
+<h2>Python Program (main.py)</h2>
+<h2>6 program -(2)</h2>
 
 <div class="code">
 <pre>
-print("Program 2 Example")
+import machine as gpio
+import utime as tm
+
+led = gpio.Pin(6, gpio.Pin.OUT)
+
+while True:
+    led.toggle()
+    tm.sleep(2)
 </pre>
 </div>
 
-<h2>Circuit</h2>
 
-<img src="program2.png">
-
-</div>
-
-
-
-<!-- PROGRAM 3 -->
-
-<div id="p3" class="program">
-
-<h2>Python Program</h2>
+<h2>Wokwi Diagram (diagram.json)</h2>
 
 <div class="code">
 <pre>
-print("Program 3 Example")
+{
+  "version": 1,
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-pi-pico", "id": "pico", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-led", "id": "led", "top": 6, "left": -73, "attrs": {} }
+  ],
+  "connections": [
+    [ "pico:GP6", "led:A", "green", [] ],
+    [ "pico:GND.3", "led:C", "black", [ "h-63.6", "v-79.95" ] ]
+  ],
+  "dependencies": {}
+}
 </pre>
 </div>
 
-<img src="program3.png">
+
+<h2>Circuit Diagram</h2>
+
+<img src="https://github.com/pythoniotlab-ctrl/Pythoniotlab-/blob/main/images/6.2.png?raw=true">
 
 </div>
 
+<br>
 
+<!--PROGRAM 7--> 
+
+<div id="p7" class="program">
+<h2>Python Program (main.py)</h2>
+<h2>7 program</h2>
+
+<div class="code">
+<pre>
+from machine import Pin
+from time import sleep
+import dht
+
+# Initialize components
+dht_sensor = dht.DHT22(Pin(16))
+Red, Green = Pin(18, Pin.OUT), Pin(20, Pin.OUT)
+
+while True:
+    dht_sensor.measure()
+    temp = dht_sensor.temperature()
+    hum = dht_sensor.humidity()  # Read humidity
+
+    # Control LEDs based on temperature
+    Red.value(temp > 30)
+    Green.value(temp <= 30)
+
+    # Print temperature and humidity
+    print(f"Temp: {temp}°C, Humidity: {hum}%")
+
+    sleep(1)
+</pre>
+</div>
+
+
+<h2>Wokwi Diagram (diagram.json)</h2>
+
+<div class="code">
+<pre>
+{
+  "version": 1,
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-pi-pico", "id": "pico", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -120, "left": 160, "attrs": {} },
+    { "type": "wokwi-led", "id": "redLed", "top": 82.8, "left": 224.6, "rotate": 90, "attrs": {} },
+    { "type": "wokwi-led", "id": "greenLed", "top": 82.8, "left": 186.2, "attrs": { "flip": "" } }
+  ],
+  "connections": [
+    [ "pico:GP16", "dht1:SDA", "green", [] ],
+    [ "pico:3V3", "dht1:VCC", "red", [] ],
+    [ "pico:GND.1", "dht1:GND", "black", [] ],
+    [ "pico:GP18", "redLed:A", "red", [] ],
+    [ "pico:GND.2", "redLed:C", "black", [] ],
+    [ "pico:GP20", "greenLed:A", "green", [] ],
+    [ "pico:GND.3", "greenLed:C", "black", [] ]
+  ],
+  "dependencies": {}
+}
+</pre>
+</div>
+
+
+<h2>Circuit Diagram</h2>
+
+<img src="https://github.com/pythoniotlab-ctrl/Pythoniotlab-/blob/main/images/7.png?raw=true">
 
 </div>
+
+<br>
+
+<!--PROGRAM 8--> 
+
+<div id="p8" class="program">
+<h2>Python Program (main.py)</h2>
+<h2>8 program</h2>
+
+<div class="code">
+<pre>
+from machine import ADC
+import time
+
+# Sensor on ADC pin (GP26)
+sensor = ADC(26)
+
+print("Bluetooth Sensor Program Started")
+print("Advertising Bluetooth...")
+
+while True:
+    value = sensor.read_u16()
+    
+    print("Sending to Smartphone:")
+    print("Sensor Value =", value)
+    print("----------------------")
+    time.sleep(2)
+</pre>
+</div>
+
+
+<h2>Wokwi Diagram (diagram.json)</h2>
+
+<div class="code">
+<pre>
+{
+  "version": 1,
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-pi-pico-w", "id": "pico", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": -87.7, "left": 38.2, "attrs": {} }
+  ],
+  "connections": [
+    [ "pot1:VCC", "pico:3V3", "red", [] ],
+    [ "pot1:GND", "pico:GND.1", "black", [] ],
+    [ "pot1:SIG", "pico:GP26", "green", [] ]
+  ],
+  "dependencies": {}
+}
+</pre>
+</div>
+
+
+<h2>Circuit Diagram</h2>
+
+<img src="https://github.com/pythoniotlab-ctrl/Pythoniotlab-/blob/main/images/8.png?raw=true">
+
+</div>
+
+<!--PROGRAM 9--> 
+
+<div id="p9" class="program">
+<h2>Python Program (main.py)</h2>
+<h2>9 program</h2>
+
+<div class="code">
+<pre>
+from machine import Pin
+import time
+
+# Button connected to GP15
+button = Pin(15, Pin.IN, Pin.PULL_UP)
+
+print(" Email Sending Simulation Started (Pico)")
+
+def send_email():
+    print("Connecting to network...")
+    time.sleep(1)
+    print("Sending email...")
+    time.sleep(1)
+    print(" Email sent successfully!")
+
+while True:
+    if button.value() == 0:   # Button pressed
+        print(" Button Pressed")
+        send_email()
+        time.sleep(2)        # debounce delay
+    time.sleep(0.1)
+</pre>
+</div>
+
+
+<h2>Wokwi Diagram (diagram.json)</h2>
+
+<div class="code">
+<pre>
+{
+  "version": 1,
+  "author": "221IT017 G. Dharsan",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-pi-pico", "id": "pico", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 67.3,
+      "left": -108.9,
+      "rotate": 270,
+      "attrs": { "color": "green", "xray": "1" }
+    }
+  ],
+  "connections": [
+    [ "btn1:1.r", "pico:GP15", "green", [ "v-29", "h48", "v166.35" ] ],
+    [ "btn1:2.r", "pico:GND.1", "black", [ "v-57.8", "h38.6", "v31.95" ] ]
+  ],
+  "dependencies": {}
+}
+</pre>
+</div>
+
+
+<h2>Circuit Diagram</h2>
+
+<img src="https://github.com/pythoniotlab-ctrl/Pythoniotlab-/blob/main/images/9.png?raw=true">
+
+</div>
+
+<br>
+
+<!--PROGRAM 10--> 
+
+<div id="p10" class="program">
+<h2>Python Program (main.py)</h2>
+<h2>10 program</h2>
+
+<div class="code">
+<pre>
+import machine
+import time
+
+LED_PIN = 0
+BUTTON_PIN = 14
+
+led = machine.Pin(LED_PIN, machine.Pin.OUT)
+button = machine.Pin(BUTTON_PIN, machine.Pin.IN, machine.Pin.PULL_UP)
+
+while True:
+    if not button.value():
+        led.on()
+        print("LED ON")
+        time.sleep(0.5)
+    else:
+        led.off()
+        print("LED OFF")
+        time.sleep(0.5)
+</pre>
+</div>
+
+
+<h2>Wokwi Diagram (diagram.json)</h2>
+
+<div class="code">
+<pre>
+{
+  "version": 1,
+  "author": "221IT047 M.M. Monish",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-pi-pico", "id": "pico", "top": -3.15, "left": 22.8, "attrs": { "env": "micropython-20231227-v1.22.0" } },
+    { "type": "wokwi-led", "id": "led1", "top": -61.2, "left": -82.6, "attrs": { "color": "red", "flip": "" } },
+    { "type": "wokwi-pushbutton", "id": "btn1", "top": 118.6, "left": -95.8, "rotate": 180, "attrs": { "color": "green" } }
+  ],
+  "connections": [
+    [ "led1:A", "pico:GP0", "green", [ "v28.8", "h67.2" ] ],
+    [ "pico:GND.1", "led1:C", "black", [ "h0" ] ],
+    [ "pico:GND.4", "btn1:1.r", "black", [ "h-134.4", "v-19.2" ] ],
+    [ "pico:GP9", "btn1:2.r", "green", [ "h-144", "v19.4" ] ],
+    [ "pico:GP9", "pico:GP14", "green", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}
+</pre>
+</div>
+
+
+<h2>Circuit Diagram</h2>
+
+<img src="https://github.com/pythoniotlab-ctrl/Pythoniotlab-/blob/main/images/10.png?raw=true">
+
+</div>
+
+<br>
+
+<!--PROGRAM 11--> 
+
+<div id="p11" class="program">
+<h2>Python Program (main.py)</h2>
+<h2>11 program</h2>
+
+<div class="code">
+<pre>
+from machine import Pin
+import dht
+from time import sleep
+
+# DHT22 sensor on GPIO16
+sensor = dht.DHT22(Pin(16))
+
+print("Server Ready")
+print("Send HUM to get humidity")
+
+while True:
+    cmd = input().strip()
+
+    if cmd.upper() == "HUM":
+        sensor.measure()
+        hum = sensor.humidity()
+        print("Humidity:", hum, "%")
+    else:
+        print("Invalid Request")
+</pre>
+</div>
+
+
+<h2>Wokwi Diagram (diagram.json)</h2>
+
+<div class="code">
+<pre>
+{
+  "version": 1,
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-pi-pico", "id": "pico", "top": -31.95, "left": -15.6, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht", "top": -95.7, "left": 109.8, "attrs": {} }
+  ],
+  "connections": [
+    [ "pico:GP16", "dht:SDA", "green", [] ],
+    [ "pico:3V3", "dht:VCC", "red", [] ],
+    [ "pico:GND.1", "dht:GND", "black", [ "h-48", "v67.2", "h211.2" ] ]
+  ],
+  "dependencies": {}
+}
+</pre>
+</div>
+
+
+<h2>Circuit Diagram</h2>
+
+<img src="https://github.com/pythoniotlab-ctrl/Pythoniotlab-/blob/main/images/11.png?raw=true">
+
+</div>
+<br>
+
+<!--PROGRAM 12--> 
+
+<div id="p12" class="program">
+<h2>Python Program (main.py)</h2>
+<h2>12 program</h2>
+
+<div class="code">
+<pre>
+from machine import Pin, PWM
+import time
+
+# create PWM object on GPIO 18
+servo = PWM(Pin(18))
+
+# set PWM frequency to 50Hz
+servo.freq(50)
+
+def set_angle(angle):
+    # convert angle (0-180) to duty cycle
+    duty = int(1000 + (angle / 360) * 8000)
+    servo.duty_u16(duty)
+
+while True:
+    for angle in range(0, 270, 5):
+        set_angle(angle)
+        time.sleep(0.05)
+
+    for angle in range(270, -1, -5):
+        set_angle(angle)
+        time.sleep(0.05)
+</pre>
+</div>
+
+
+<h2>Wokwi Diagram (diagram.json)</h2>
+
+<div class="code">
+<pre>
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-pi-pico",
+      "id": "pico",
+      "top": 25.65,
+      "left": -159.6,
+      "attrs": { "env": "micropython-20241129-v1.24.1" }
+    },
+    { "type": "wokwi-servo", "id": "servo1", "top": -50, "left": 28.8, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 102.2,
+      "left": -48,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    { "type": "wokwi-relay-module", "id": "relay1", "top": 57.8, "left": 76.8, "attrs": {} }
+  ],
+  "connections": [
+    [ "pico:GP18", "btn1:2.l", "yellow", [] ],
+    [ "btn1:1.r", "servo1:PWM", "yellow", [] ],
+    [ "relay1:GND", "pico:GND.8", "black", [] ],
+    [ "pico:GND.8", "servo1:GND", "black", [] ],
+    [ "servo1:V+", "relay1:VCC", "red", [] ]
+  ],
+  "dependencies": {}
+}
+</pre>
+</div>
+
+
+<h2>Circuit Diagram</h2>
+
+<img src="https://github.com/pythoniotlab-ctrl/Pythoniotlab-/blob/main/images/12.png?raw=true">
+
+</div>
+<br>
+
+<!--PROGRAM 13--> 
+
+<div id="p13" class="program">
+<h2>Python Program (main.py)</h2>
+<h2>13 program</h2>
+
+<div class="code">
+<pre>
+import machine
+import utime
+
+sensor = machine.Pin(2, machine.Pin.IN)
+led = machine.Pin(9, machine.Pin.OUT)
+
+def read_pir():
+    output = sensor.value()
+    if output == 1:
+        print("PIR sensor detected an object")
+        led.value(1)
+    else:
+        print("PIR sensor did not detected an object")
+        led.value(0)
+
+while True:
+    read_pir()
+    utime.sleep(4)
+</pre>
+</div>
+
+
+<h2>Wokwi Diagram (diagram.json)</h2>
+
+<div class="code">
+<pre>
+{
+{
+  "version": 1,
+  "author": "221IT047 M.M. Monish",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-pi-pico",
+      "id": "pico",
+      "top": 25.65,
+      "left": 61.2,
+      "attrs": { "env": "micropython-20231227-v1.22.0" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 174.4,
+      "left": 13.8,
+      "rotate": 180,
+      "attrs": { "color": "red", "flip": "" }
+    },
+    { "type": "wokwi-pir-motion-sensor", "id": "pir1", "top": -53.6, "left": -45.78, "attrs": {} }
+  ],
+  "connections": [
+    [ "pico:GND.1", "pir1:GND", "black", [] ],
+    [ "pico:GP2", "pir1:OUT", "green", [] ],
+    [ "pico:3V3", "pir1:VCC", "red", [] ],
+    [ "led1:C", "pico:GND.3", "black", [] ],
+    [ "led1:A", "pico:GP9", "green", [] ]
+  ],
+  "dependencies": {}
+}
+</pre>
+</div>
+
+
+<h2>Circuit Diagram</h2>
+
+<img src="https://github.com/pythoniotlab-ctrl/Pythoniotlab-/blob/main/images/13.png?raw=true">
+
+</div>
+
+<br>
+<!--PROGRAM 14--> 
+
+<div id="p14" class="program">
+<h2>Python Program (main.py)</h2>
+<h2>14 program</h2>
+
+<div class="code">
+<pre>
+import random
+import time
+
+NUM_PARKING_SPOTS = 5
+parking_lot = [False] * NUM_PARKING_SPOTS
+
+def read_sensor(spot):
+    return parking_lot[spot]
+
+def update_parking_lot():
+    global parking_lot
+    for i in range(NUM_PARKING_SPOTS):
+        parking_lot[i] = random.choice([True, False])
+
+def display_parking_lot():
+    print("Parking Lot Status:")
+    for i in range(NUM_PARKING_SPOTS):
+        status = "Occupied" if parking_lot[i] else "Vacant"
+        print(f"Spot {i+1}: {status}")
+    print()
+
+def find_vacant_spot():
+    for i in range(NUM_PARKING_SPOTS):
+        if not parking_lot[i]:
+            return i + 1
+    return None
+
+def main():
+    print("Welcome to Smart Parking Service!")
+    while True:
+        update_parking_lot()
+        display_parking_lot()
+        vacant_spot = find_vacant_spot()
+
+        if vacant_spot:
+            print(f"Vacant parking spot available at Spot {vacant_spot}. You can park here!")
+        else:
+            print("Sorry, no vacant spots available.")
+
+        time.sleep(5)
+
+if __name__ == "__main__":
+    main()
+</pre>
+</div>
+
+
+<h2>Wokwi Diagram (diagram.json)</h2>
+
+<div class="code">
+<pre>
+{
+  "version": 1,
+  "author": "221IT046 S. Abinaya",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-pi-pico",
+      "id": "pico",
+      "top": 0,
+      "left": 0,
+      "attrs": { "env": "micropython-20231227-v1.22.0" }
+    },
+    { "type": "wokwi-hc-sr04", "id": "ultrasonic1", "top": -84.9, "left": -205.7, "attrs": {} }
+  ],
+  "connections": [
+    [ "ultrasonic1:GND", "pico:GND.1", "black", [] ],
+    [ "ultrasonic1:ECHO", "pico:GP26", "green", [] ],
+    [ "ultrasonic1:TRIG", "pico:GP28", "green", [] ],
+    [ "ultrasonic1:VCC", "pico:GP5", "red", [] ]
+  ],
+  "dependencies": {}
+}
+</pre>
+</div>
+
+
+<h2>Circuit Diagram</h2>
+
+<img src="https://github.com/pythoniotlab-ctrl/Pythoniotlab-/blob/main/images/14.png?raw=true">
+
+</div>
+<br>
+
+<!--PROGRAM 15--> 
+
+<div id="p15" class="program">
+<h2>Python Program (main.py)</h2>
+<h2>15 program</h2>
+
+<div class="code">
+<pre>
+from machine import Pin
+import dht
+import time
+
+# -------------------------
+# TM1637 driver (minimal)
+# -------------------------
+class TM1637:
+    def __init__(self, clk, dio):
+        self.clk = Pin(clk, Pin.OUT)
+        self.dio = Pin(dio, Pin.OUT)
+        self.brightness = 0x0f
+
+    def start(self):
+        self.dio.value(1)
+        self.clk.value(1)
+        self.dio.value(0)
+
+    def stop(self):
+        self.clk.value(0)
+        self.dio.value(0)
+        self.clk.value(1)
+        self.dio.value(1)
+
+    def write_byte(self, data):
+        for _ in range(8):
+            self.clk.value(0)
+            self.dio.value(data & 1)
+            data >>= 1
+            self.clk.value(1)
+        self.clk.value(0)
+        self.clk.value(1)
+
+    def show(self, digits):
+        segs = [0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,
+                0x7f,0x6f]
+        self.start()
+        self.write_byte(0x40)
+        self.stop()
+
+        self.start()
+        self.write_byte(0xc0)
+        for d in digits:
+            self.write_byte(segs[d] if d >= 0 else 0x00)
+        self.stop()
+
+        self.start()
+        self.write_byte(0x88 | self.brightness)
+        self.stop()
+
+
+# -------------------------
+# Hardware setup
+# -------------------------
+dht_sensor = dht.DHT22(Pin(15))   # DHT data pin
+display = TM1637(clk=2, dio=3)   # TM1637 pins
+
+# -------------------------
+# Main loop
+# -------------------------
+while True:
+    try:
+        dht_sensor.measure()
+        temp = int(dht_sensor.temperature())
+
+        # Split into digits
+        digits = [
+            temp // 10,
+            temp % 10,
+            -1,
+            -1
+        ]
+
+        display.show(digits)
+        print("Temperature:", temp, "°C")
+
+    except Exception as e:
+        print("Error:", e)
+
+    time.sleep(2)
+</pre>
+</div>
+
+
+<h2>Wokwi Diagram (diagram.json)</h2>
+
+<div class="code">
+<pre>
+{
+  "version": 1,
+  "author": "ChatGPT",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-pi-pico", "id": "pico", "top": -3.15, "left": 3.6, "attrs": {} },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -38.1,
+      "left": 148.2,
+      "attrs": { "temperature": "25" }
+    },
+    {
+      "type": "wokwi-tm1637-7segment",
+      "id": "display",
+      "top": 115.16,
+      "left": 103.03,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "pico:GP15", "dht1:SDA", "green", [ "v19.2", "h86.4", "v-124.8", "h76.7" ] ],
+    [ "pico:3V3", "dht1:VCC", "red", [ "h49.2", "v28.8" ] ],
+    [ "pico:GND", "dht1:GND", "black", [] ],
+    [ "pico:GP2", "display:CLK", "blue", [ "h96", "v67.2", "h172.8" ] ],
+    [ "pico:GP3", "display:DIO", "green", [ "h-38.4", "v172.8", "h336", "v-67.2" ] ],
+    [ "pico:3V3", "display:VCC", "red", [ "h39.6", "v48", "h192", "v67.2" ] ],
+    [ "pico:GND", "display:GND", "black", [] ]
+  ],
+  "dependencies": {}
+}
+</pre>
+</div>
+
+
+<h2>Circuit Diagram</h2>
+
+<img src="https://github.com/pythoniotlab-ctrl/Pythoniotlab-/blob/main/images/15.png?raw=true">
+
+</div>
+
 
 
 
